@@ -1,13 +1,7 @@
-name: Build Test App
+name: Manual Build Test App
 
 on:
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - 'README.md'
-      - 'CHANGE.md'
-      - 'doc/*'
-      - '.github/*'
+  workflow_dispatch:
 
 jobs:
   build-windows:
@@ -18,80 +12,77 @@ jobs:
         with:
           node-version: '14.x'
 
-      - name: blocks Install
+      - name: Checkout openblock-ee-blocks
         uses: actions/checkout@v2
-        with: 
+        with:
           repository: openblockee/openblock-ee-blocks
           ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-blocks
+
       - uses: actions/setup-python@v2
         with:
-          python-version: '2.x' 
+          python-version: '2.x'
           architecture: 'x64'
+
       - run: |
           cd openblock-blocks
           npm ci
           npm link
 
-      - uses: actions/setup-python@v2
+      - name: Checkout openblock-ee-vm
+        uses: actions/checkout@v2
         with:
-          python-version: '3.x' 
-          architecture: 'x64'
-
-      - name: link Install
-        uses: actions/checkout@v2
-        with: 
-          repository: openblockee/openblock-ee-link
-          ref: refs/heads/develop
-          token: ${{ secrets.GH_TOKEN }}
-          path: openblock-link
-      - run: |
-          cd openblock-link
-          npm ci
-          npm link
-
-      - name: vm Install
-        uses: actions/checkout@v2
-        with: 
           repository: openblockee/openblock-ee-vm
-          ref: refs/heads/develop
+          ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
-          path: openblock-vm  
+          path: openblock-vm
+
       - run: |
           cd openblock-vm
           npm ci
           npm link
 
-      - name: gui Install
+      - name: Checkout openblock-ee-link
         uses: actions/checkout@v2
-        with: 
+        with:
+          repository: openblockee/openblock-ee-link
+          ref: refs/heads/main
+          token: ${{ secrets.GH_TOKEN }}
+          path: openblock-link
+
+      - run: |
+          cd openblock-link
+          npm ci
+          npm link
+
+      - name: Checkout openblock-ee-gui
+        uses: actions/checkout@v2
+        with:
           repository: openblockee/openblock-ee-gui
           ref: refs/heads/desktop
           token: ${{ secrets.GH_TOKEN }}
-          path: openblock-gui  
+          path: openblock-gui
+
       - run: |
           cd openblock-gui
           npm ci
-          npm install --save-dev encoding@^0.1.13 iconv browser
           npm link
           npm link openblock-vm openblock-blocks
 
-      - name: desktop Install
+      - name: Checkout openblock-ee-desktop
         uses: actions/checkout@v2
-        with: 
-          repository: openblockee/openblock-ee-desktop
-          ref: refs/heads/main
-          token: ${{ secrets.GH_TOKEN }}
-          path: openblock-desktop  
+        with:
+          path: openblock-desktop
+
       - run: |
           cd openblock-desktop
           npm ci
           npm link openblock-vm openblock-link openblock-gui openblock-blocks
-                   
+
       - name: Build Dist
         env:
-          # GA_ID: ${{ secrets.GA_ID }}
+          GA_ID: ${{ secrets.GA_ID }}
           NODE_ENV: production
           NODE_OPTIONS: --max_old_space_size=4096
         run: |
@@ -113,74 +104,74 @@ jobs:
         with:
           node-version: '14.x'
 
-      - name: blocks Install
+      - name: Checkout openblock-ee-blocks
         uses: actions/checkout@v2
-        with: 
+        with:
           repository: openblockee/openblock-ee-blocks
           ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-blocks
+
       - run: |
           cd openblock-blocks
           npm ci
           npm link
 
-      - name: link Install
+      - name: Checkout openblock-ee-vm
         uses: actions/checkout@v2
-        with: 
-          repository: openblockee/openblock-ee-link
-          ref: refs/heads/develop
-          token: ${{ secrets.GH_TOKEN }}
-          path: openblock-link
-      - run: |
-          cd openblock-link
-          npm ci
-          npm link
-
-      - name: vm Install
-        uses: actions/checkout@v2
-        with: 
+        with:
           repository: openblockee/openblock-ee-vm
-          ref: refs/heads/develop
+          ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
-          path: openblock-vm  
+          path: openblock-vm
+
       - run: |
           cd openblock-vm
           npm ci
           npm link
 
-      - name: gui Install
+      - name: Checkout openblock-ee-link
         uses: actions/checkout@v2
-        with: 
+        with:
+          repository: openblockee/openblock-ee-link
+          ref: refs/heads/main
+          token: ${{ secrets.GH_TOKEN }}
+          path: openblock-link
+
+      - run: |
+          cd openblock-link
+          npm i
+          npm link
+
+      - name: Checkout openblock-ee-gui
+        uses: actions/checkout@v2
+        with:
           repository: openblockee/openblock-ee-gui
           ref: refs/heads/desktop
           token: ${{ secrets.GH_TOKEN }}
-          path: openblock-gui  
+          path: openblock-gui
+
       - run: |
           cd openblock-gui
           npm ci
-          npm install --save-dev encoding@^0.1.13 iconv browser
           npm link
           npm link openblock-vm openblock-blocks
 
-      - name: desktop Install
+      - name: Checkout openblock-ee-desktop
         uses: actions/checkout@v2
-        with: 
-          repository: openblockee/openblock-ee-desktop
-          ref: refs/heads/main
-          token: ${{ secrets.GH_TOKEN }}
-          path: openblock-desktop  
+        with:
+          path: openblock-desktop
+
       - run: |
           cd openblock-desktop
           npm ci
           npm link openblock-vm openblock-link openblock-gui openblock-blocks
-                   
+
       - name: Build Dist
         env:
-          # GA_ID: ${{ secrets.GA_ID }}
+          GA_ID: ${{ secrets.GA_ID }}
           NODE_ENV: production
-          NODE_OPTIONS: --max_old_space_size=8192
-          CSC_IDENTITY_AUTO_DISCOVERY: false
+          NODE_OPTIONS: --max_old_space_size=4096
         run: |
           cd openblock-desktop
           npm run dist
