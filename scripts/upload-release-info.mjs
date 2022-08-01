@@ -6,7 +6,7 @@ import fetch from 'node-fetch';
 import {S3, PutObjectCommand} from '@aws-sdk/client-s3';
 
 export const FILE_PATH = 'desktop/latestRelease.json';
-const REPO = 'openblockcc/openblock-desktop';
+const REPO = 'openblockee/openblock-ee-desktop';
 
 const s3Client = new S3({
     endpoint: 'https://sgp1.digitaloceanspaces.com',
@@ -18,7 +18,7 @@ const s3Client = new S3({
 });
 
 const bucketParams = content => ({
-    Bucket: 'openblock',
+    Bucket: 'openblockee',
     Key: FILE_PATH,
     Body: Buffer.from(content, 'utf8'),
     ACL: 'public-read'
