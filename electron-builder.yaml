@@ -8,7 +8,7 @@ productName: "OpenBlockDesktopEE"
 publish:
   - provider: github
   - provider: spaces
-    name: openblockee
+    name: 
     path: desktop
     region: sgp1
 
