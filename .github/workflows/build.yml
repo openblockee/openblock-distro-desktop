@@ -76,6 +76,19 @@ jobs:
           npm ci
           npm link
 
+      - name: l10n Install
+        uses: actions/checkout@v2
+        with: 
+          repository: openblockee/openblock-ee-l10n
+          ref: refs/heads/kada
+          token: ${{ secrets.GH_TOKEN }}
+          path: openblock-l10n  
+      - run: |
+          cd openblock-l10n
+          npm ci
+          npm run build
+          npm link --force
+
       - name: gui Install
         uses: actions/checkout@v2
         with: 
@@ -88,7 +101,7 @@ jobs:
           npm ci
           npm install --save-dev encoding@^0.1.13 iconv browser
           npm link
-          npm link openblock-vm openblock-blocks
+          npm link openblock-vm openblock-blocks openblock-l10n
 
       - name: desktop Install
         uses: actions/checkout@v2
@@ -100,7 +113,7 @@ jobs:
       - run: |
           cd openblock-desktop
           npm ci
-          npm link openblock-vm openblock-link openblock-resource openblock-gui openblock-blocks
+          npm link openblock-l10n openblock-vm openblock-link openblock-resource openblock-gui openblock-blocks
                    
       - name: Build Dist
         env:
