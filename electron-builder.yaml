@@ -61,4 +61,4 @@ nsis:
   allowToChangeInstallationDirectory: true
   include: buildResources/installer.nsh
 #   license: LICENSE
-  artifactName: "OpenBlock-Desktop-kada_${version}.${ext}"
+  artifactName: "OpenBlock-Desktop-CaDA_${version}.${ext}"
