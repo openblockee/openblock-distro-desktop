@@ -2,8 +2,8 @@
   "name": "openblock-desktop",
   "productName": "OpenBlockDesktopEE",
   "description": "OpenBlock as a self-contained desktop application",
-  "author": "Openblock.cc Team",
-  "version": "2.3.1",
+  "author": "Openblock.cc Team <contact@openblock.cc> (http://www.openblock.cc/)",
+  "version": "2.3.3",
   "license": "MIT",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
@@ -36,8 +36,8 @@
   },
   "dependencies": {
     "bytes": "^3.1.2",
-    "openblock-link": "^0.2.0-prerelease.20220404092817",
-    "openblock-resource": "^0.2.0-prerelease.20220702143332",
+    "openblock-link": "^0.2.0-prerelease.20221009055343",
+    "openblock-resource": "^0.2.0-prerelease.20220716123724",
     "postinstall": "^0.7.4",
     "source-map-support": "^0.5.19"
   },
@@ -59,7 +59,7 @@
     "copy-webpack-plugin": "^5.1.1",
     "download-github-release": "^0.3.2",
     "electron": "^15.3.1",
-    "electron-builder": "^22.13.1",
+    "electron-builder": "^23.3.3",
     "electron-devtools-installer": "^3.2.0",
     "electron-fetch": "^1.7.4",
     "electron-log": "^4.4.6",
@@ -84,7 +84,7 @@
     "nets": "^3.2.0",
     "node-abort-controller": "^3.0.1",
     "node-fetch": "^3.2.1",
-    "openblock-gui": "github:openblockcc/openblock-gui#openblock-desktop-v2.3.1",
+    "openblock-gui": "github:openblockcc/openblock-gui#openblock-desktop-v2.3.3",
     "openblock-l10n": "^3.10.20220725124603",
     "openblock-parse-release-message": "0.0.4",
     "os-locale": "^5.0.0",
@@ -94,6 +94,7 @@
     "react-redux": "5.0.7",
     "redux": "3.7.2",
     "rimraf": "^3.0.2",
+    "sudo-prompt": "^9.2.1",
     "uuid": "^8.3.2",
     "webpack": "^4.43.0",
     "webpack-shell-plugin": "^0.5.0"
