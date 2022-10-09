@@ -15,7 +15,7 @@
 
 - **New feature**
 
-    1. Add support for Arduino K210.
+    1. Add support for K210.
     2. Adjust the menu bar layout.
     3. Add support for setting the maximum and minimum values of the angle plate, the excess part will be displayed in gray.
     4. The color of the numerical slider track changes from gray to change with the color of the parent block.
