@@ -3,7 +3,7 @@ directories:
   output: dist
 extraFiles: ['LICENSE', 'LICENSE.ScratchFoundation', 'TRADEMARK', "tools", "external-resources", 'firmwares', "drivers"]
 
-appId: openblock.cc.openblock-desktop
+appId: openblock.cc.openblock-ee-desktop
 productName: "OpenBlockDesktopEE"
 publish:
   - provider: github
