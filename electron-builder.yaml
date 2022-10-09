@@ -47,7 +47,7 @@ dmg:
 #   provisioningProfile: mas-dev.provisionprofile
 
 win:
-  icon: buildResources/linux
+  icon: buildResources/OpenBlockDesktop.ico
   target:
     # - appx
     - nsis
