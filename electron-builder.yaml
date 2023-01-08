@@ -30,12 +30,12 @@ mac:
   hardenedRuntime: true
   icon: buildResources/OpenBlockDesktop.icns
   provisioningProfile: embedded.provisionprofile
-  artifactName: "OpenBlock-Desktop-EE_${version}.${ext}"
+  artifactName: "OpenBlock-Desktop-CaDA_${version}.${ext}"
   target:
     - dmg
     # - mas
 dmg:
-  title: "OpenBlock-Desktop-EE_${version}"
+  title: "OpenBlock-Desktop-CaDA_${version}"
 # mas:
 #   category: public.app-category.education
 #   entitlements: buildResources/entitlements.mas.plist
