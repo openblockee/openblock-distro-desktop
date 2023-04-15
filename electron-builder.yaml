@@ -3,8 +3,8 @@ directories:
   output: dist
 extraFiles: ['LICENSE', 'LICENSE.ScratchFoundation', 'TRADEMARK', "tools", "external-resources", 'firmwares', "drivers"]
 
-appId: openblock.cc.openblock-desktop
-productName: "OpenBlockDesktopEE"
+appId: openblock.cc.openblock-CaDA-desktop
+productName: "OpenBlockDesktopCaDA"
 publish:
   - provider: github
   - provider: spaces
