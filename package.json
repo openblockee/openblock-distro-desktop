@@ -3,7 +3,7 @@
   "productName": "OpenBlockDesktop+CaDA测试版2",
   "description": "OpenBlock as a self-contained desktop application",
   "author": "Openblock.cc Team",
-  "version": "2.3.5",
+  "version": "2.3.6",
   "license": "MIT",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
