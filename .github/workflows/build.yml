@@ -19,17 +19,17 @@ jobs:
         with:
           node-version: '14.x'
 
+      - name: Install Python 2.7.18
+        run: |
+          choco install python2 --params '"/InstallDir:C:\tools\python2"'
+
       - name: blocks Install
         uses: actions/checkout@v2
         with: 
           repository: openblockee/openblock-ee-blocks
-          ref: refs/heads/kada
+          ref: refs/heads/kada-win
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-blocks
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '2.x' 
-          architecture: 'x64'
       - run: |
           cd openblock-blocks
           npm ci
