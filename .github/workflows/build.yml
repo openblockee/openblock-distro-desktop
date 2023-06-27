@@ -55,8 +55,8 @@ jobs:
       - name: resource Install
         uses: actions/checkout@v2
         with: 
-          repository: openblockcc/openblock-resource
-          ref: refs/heads/main
+          repository: openblockee/openblock-ee-resource
+          ref: refs/heads/kada
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-resource
       - run: |
@@ -171,8 +171,8 @@ jobs:
       - name: resource Install
         uses: actions/checkout@v2
         with: 
-          repository: openblockcc/openblock-resource
-          ref: refs/heads/main
+          repository: openblockee/openblock-ee-resource
+          ref: refs/heads/kada
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-resource
       - run: |
