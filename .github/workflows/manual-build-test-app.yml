@@ -12,10 +12,10 @@ jobs:
         with:
           node-version: '14.x'
 
-      - name: Checkout openblock-ee-blocks
+      - name: Checkout openblock-distro-blocks
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-blocks
+          repository: openblockee/openblock-distro-blocks
           ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-blocks
@@ -30,11 +30,11 @@ jobs:
           npm ci
           npm link
 
-      - name: Checkout openblock-ee-vm
+      - name: Checkout openblock-distro-vm
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-vm
-          ref: refs/heads/main
+          repository: openblockee/openblock-distro-vm
+          ref: refs/heads/develop
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-vm
 
@@ -43,10 +43,10 @@ jobs:
           npm ci
           npm link
 
-      - name: Checkout openblock-ee-link
+      - name: Checkout openblock-distro-link
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-link
+          repository: openblockee/openblock-distro-link
           ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-link
@@ -56,10 +56,10 @@ jobs:
           npm ci
           npm link
 
-      - name: Checkout openblock-ee-gui
+      - name: Checkout openblock-distro-gui
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-gui
+          repository: openblockee/openblock-distro-gui
           ref: refs/heads/desktop
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-gui
@@ -70,7 +70,7 @@ jobs:
           npm link
           npm link openblock-vm openblock-blocks
 
-      - name: Checkout openblock-ee-desktop
+      - name: Checkout openblock-distro-desktop
         uses: actions/checkout@v2
         with:
           path: openblock-desktop
@@ -103,10 +103,10 @@ jobs:
         with:
           node-version: '14.x'
 
-      - name: Checkout openblock-ee-blocks
+      - name: Checkout openblock-distro-blocks
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-blocks
+          repository: openblockee/openblock-distro-blocks
           ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-blocks
@@ -116,11 +116,11 @@ jobs:
           npm ci
           npm link
 
-      - name: Checkout openblock-ee-vm
+      - name: Checkout openblock-distro-vm
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-vm
-          ref: refs/heads/main
+          repository: openblockee/openblock-distro-vm
+          ref: refs/heads/develop
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-vm
 
@@ -129,10 +129,10 @@ jobs:
           npm ci
           npm link
 
-      - name: Checkout openblock-ee-link
+      - name: Checkout openblock-distro-link
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-link
+          repository: openblockee/openblock-distro-link
           ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-link
@@ -142,10 +142,10 @@ jobs:
           npm i
           npm link
 
-      - name: Checkout openblock-ee-gui
+      - name: Checkout openblock-distro-gui
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-gui
+          repository: openblockee/openblock-distro-gui
           ref: refs/heads/desktop
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-gui
@@ -156,7 +156,7 @@ jobs:
           npm link
           npm link openblock-vm openblock-blocks
 
-      - name: Checkout openblock-ee-desktop
+      - name: Checkout openblock-distro-desktop
         uses: actions/checkout@v2
         with:
           path: openblock-desktop
@@ -189,10 +189,10 @@ jobs:
         with:
           node-version: '14.x'
 
-      - name: Checkout openblock-ee-blocks
+      - name: Checkout openblock-distro-blocks
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-blocks
+          repository: openblockee/openblock-distro-blocks
           ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-blocks
@@ -202,11 +202,11 @@ jobs:
           npm ci
           npm link
 
-      - name: Checkout openblock-ee-vm
+      - name: Checkout openblock-distro-vm
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-vm
-          ref: refs/heads/main
+          repository: openblockee/openblock-distro-vm
+          ref: refs/heads/develop
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-vm
 
@@ -215,10 +215,10 @@ jobs:
           npm ci
           npm link
 
-      - name: Checkout openblock-ee-link
+      - name: Checkout openblock-distro-link
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-link
+          repository: openblockee/openblock-distro-link
           ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-link
@@ -228,10 +228,10 @@ jobs:
           npm i
           npm link
 
-      - name: Checkout openblock-ee-gui
+      - name: Checkout openblock-distro-gui
         uses: actions/checkout@v2
         with:
-          repository: openblockee/openblock-ee-gui
+          repository: openblockee/openblock-distro-gui
           ref: refs/heads/desktop
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-gui
@@ -242,7 +242,7 @@ jobs:
           npm link
           npm link openblock-vm openblock-blocks
 
-      - name: Checkout openblock-ee-desktop
+      - name: Checkout openblock-distro-desktop
         uses: actions/checkout@v2
         with:
           path: openblock-desktop
