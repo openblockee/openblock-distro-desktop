@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: openblockee/openblock-distro-vm
-          ref: refs/heads/develop
+          ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-vm
 
@@ -120,7 +120,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: openblockee/openblock-distro-vm
-          ref: refs/heads/develop
+          ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-vm
 
@@ -206,7 +206,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: openblockee/openblock-distro-vm
-          ref: refs/heads/develop
+          ref: refs/heads/main
           token: ${{ secrets.GH_TOKEN }}
           path: openblock-vm
 
