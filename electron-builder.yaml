@@ -5,12 +5,6 @@ extraFiles: ['LICENSE', 'LICENSE.ScratchFoundation', 'TRADEMARK', "tools", "exte
 
 appId: openblock.cc.openblock-CaDA-desktop
 productName: "OpenBlockDesktopCaDA"
-publish:
-  - provider: github
-  - provider: spaces
-    name: 
-    path: desktop
-    region: sgp1
 
 fileAssociations:
   ext: ob

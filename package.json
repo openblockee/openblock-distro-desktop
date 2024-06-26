@@ -3,7 +3,7 @@
   "productName": "OpenBlockDesktop CaDA",
   "description": "OpenBlock as a self-contained desktop application",
   "author": "Openblock.cc Team",
-  "version": "2.3.10",
+  "version": "2.3.11",
   "license": "MIT",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
@@ -16,7 +16,7 @@
     "fetch:exts": "rimraf ./external-resources && node ./node_modules/openblock-resource/script/download.js  --repo=openblockee/ee-external-resources-v2",
     "fetch:firmwares": "rimraf ./firmwares && node ./node_modules/openblock-link/script/download-firmwares.js",
     "fetch:tools": "rimraf ./tools && node ./node_modules/openblock-link/script/download-tools.js",
-    "fetch:static": "rimraf ./static && mkdirp ./static && git clone https://github.com/openblockcc/openblock-assets.git static && rimraf ./static/.git",
+    "fetch:static": "rimraf ./static && mkdirp ./static && git clone -b cada https://github.com/openblockee/openblock-distro-assets.git static && rimraf ./static/.git",
     "fetch:all": "npm run fetch:drivers && npm run fetch:exts && npm run fetch:firmwares && npm run fetch:tools && npm run fetch:static",
     "build": "npm run build:dev",
     "build:dev": "npm run compile && npm run doBuild -- --mode=dev",
@@ -28,7 +28,8 @@
     "dist": "npm run clean && npm run compile && npm run fetch:all && npm run doBuild -- --mode=dist",
     "publish": "npm run clean && npm run compile && npm run fetch:all  && npm run doBuild -- --mode=publish",
     "test": "npm run test:lint",
-    "test:lint": "eslint --cache --color --ext .jsx,.js src scripts"
+    "test:lint": "eslint --cache --color --ext .jsx,.js src scripts",
+    "ln": "npm link openblock-gui openblock-vm openblock-l10n openblock-blocks openblock-link"
   },
   "repository": {
     "type": "git",
@@ -37,7 +38,7 @@
   "dependencies": {
     "bytes": "^3.1.2",
     "openblock-link": "^0.2.0-prerelease.20221009055343",
-    "openblock-resource": "^0.2.0-prerelease.20220716123724",
+    "openblock-resource": "^0.2.0-prerelease.20230331125848",
     "postinstall": "^0.7.4",
     "source-map-support": "^0.5.19"
   },
@@ -59,7 +60,7 @@
     "copy-webpack-plugin": "^5.1.1",
     "download-github-release": "^0.3.2",
     "electron": "^15.3.1",
-    "electron-builder": "^23.3.3",
+    "electron-builder": "^22.14.13",
     "electron-devtools-installer": "^3.2.0",
     "electron-fetch": "^1.7.4",
     "electron-log": "^4.4.6",
@@ -83,7 +84,6 @@
     "monaco-editor-webpack-plugin": "^1.7.0",
     "nets": "^3.2.0",
     "node-abort-controller": "^3.0.1",
-    "node-fetch": "^3.2.1",
     "openblock-gui": "github:openblockcc/openblock-gui#openblock-desktop-v2.3.3",
     "openblock-l10n": "^3.10.20220725124603",
     "openblock-parse-release-message": "0.0.4",
