@@ -30,9 +30,13 @@ app.allowRendererProcessReuse = true;
 // allow connect to localhost
 app.commandLine.appendSwitch('allow-insecure-localhost', 'true');
 
+// enable gpu and ignore gpu blacklist
+app.commandLine.hasSwitch('enable-gpu');
+app.commandLine.hasSwitch('ignore-gpu-blacklist');
+
 telemetry.appWasOpened();
 
-const defaultSize = {width: 1600, height: 900};
+const defaultSize = {width: 1620, height: 900};
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -527,26 +531,6 @@ app.on('ready', () => {
         });
     }
 
-    _windows.main = createMainWindow();
-    _windows.main.on('closed', () => {
-        delete _windows.main;
-    });
-    _windows.about = createAboutWindow();
-    _windows.about.on('close', event => {
-        event.preventDefault();
-        _windows.about.hide();
-    });
-    _windows.license = createLicenseWindow();
-    _windows.license.on('close', event => {
-        event.preventDefault();
-        _windows.license.hide();
-    });
-    _windows.privacy = createPrivacyWindow();
-    _windows.privacy.on('close', event => {
-        event.preventDefault();
-        _windows.privacy.hide();
-    });
-
     ipcMain.on('clearCache', () => {
         desktopLink.clearCache();
     });
@@ -567,33 +551,66 @@ app.on('ready', () => {
     // create a loading windows let user know the app is starting
     _windows.loading = createLoadingWindow();
     _windows.loading.once('show', () => {
-        desktopLink.updateCahce();
-        desktopLink.start()
-            .then(() => {
-                // after finsh load progress show main window and close loading window
-                _windows.main.show();
-                _windows.loading.close();
-                delete _windows.loading;
-            })
-            .catch(async e => {
-            // TODO: report error via telemetry
-                await dialog.showMessageBox(_windows.loading, {
-                    type: 'error',
-                    title: formatMessage({
-                        id: 'index.initialResourcesFailedTitle',
-                        default: 'Failed to initialize resources',
-                        description: 'Title for initialize resources failed'
-                    }),
-                    message: `${formatMessage({
-                        id: 'index.initializeResourcesFailed',
-                        default: 'Initialize resources failed',
-                        description: 'prompt for initialize resources failed'
-                    })}`,
-                    detail: e
-                });
+        // TODO: This code should be deleted afterwards
+        // Due to the changes in cache logic updates, before adding the online
+        // library version, clear the cache directly to prevent the old cache
+        // content from interfering with the operation of the new version.
+        desktopLink.clearCache(false);
 
-                app.exit();
+        desktopLink.start();
+
+        _windows.main = createMainWindow();
+        _windows.main.on('closed', () => {
+            delete _windows.main;
+        });
+
+        // In order to fix the bug caused by using alert on windows
+        // https://github.com/electron/electron/issues/20400
+        if (process.platform === 'win32') {
+            let needsFocusFix = false;
+            let triggeringProgrammaticBlur = false;
+            _windows.main.on('blur', () => {
+                if (!triggeringProgrammaticBlur) {
+                    needsFocusFix = true;
+                }
             });
+            _windows.main.on('focus', () => {
+                if (needsFocusFix) {
+                    needsFocusFix = false;
+                    triggeringProgrammaticBlur = true;
+                    setTimeout(() => {
+                        if (_windows.main) {
+                            _windows.main.blur();
+                            _windows.main.focus();
+                            setTimeout(() => {
+                                triggeringProgrammaticBlur = false;
+                            }, 100);
+                        }
+                    }, 100);
+                }
+            });
+        }
+
+        _windows.about = createAboutWindow();
+        _windows.about.on('close', event => {
+            event.preventDefault();
+            _windows.about.hide();
+        });
+        _windows.license = createLicenseWindow();
+        _windows.license.on('close', event => {
+            event.preventDefault();
+            _windows.license.hide();
+        });
+        _windows.privacy = createPrivacyWindow();
+        _windows.privacy.on('close', event => {
+            event.preventDefault();
+            _windows.privacy.hide();
+        });
+
+        // after finsh load progress show main window and close loading window
+        _windows.main.show();
+        _windows.loading.close();
+        delete _windows.loading;
     });
 });
 

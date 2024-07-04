@@ -1,5 +1,66 @@
 # Change Log
 
+## 2.5.1
+
+- **New feature**
+
+    1. Re-support windows-ia32 architecture.
+
+- **Fix bug**
+
+    1. When installing on Windows, an error message always appears: The app is running and cannot be closed.
+    2. Running on Windows 7 will report an error and cannot start.
+
+## 2.5.0
+
+- **New feature**
+
+    1. Added support for Russian language.
+    2. Add support for unload sratch extennsion.
+    3. When the window width cannot fit the menu bar content, an abbreviated version of the menu is displayed.
+    4. Adjust the framework of external resources and support the injection of resources from non-installation departments.
+    5. Add support for copying and pasting blocks.
+    6. Add support for custom matrix block height and width.
+    7. Added support for aborting the Arduino upload process.
+    8. Upgrade google analytics to GA4.
+
+- **Fix bug**
+
+    1. After unchecking show all devices, non-compliant devices still appear in the connection list.
+    2. After uploading is completed, click the upload information to automatically jump to the bottom of the content.
+    3. Corrected the text description of the Arduino serial port reading block.
+    4. Corrected the code generation structure of the microbit event block to prevent function crash caused by repeated reentry when using a perpetual loop in the event block.
+    5. The Arduino program will be stuck for a short while before uploading
+    6. esp32 arduino setPinMode building block pin menu only shows output pins.
+    7. In the library interface, if a item title is too long, it will not be fully displayed.
+    8. mega2560 real-time mode reading analog pin error.
+
+## 2.4.1
+
+- **New feature**
+
+    1. Designate independent cache paths for different Arduino boards to speed up compilation.
+    2. Add the upload abort function to abort the upload operation during the upload process.
+    3. When the device is being connected, if the serial port is occupied, it will display the connection failure and prompt that the serial port is occupied.
+    4. A 3-second timer is added to automatically close the upload window when the upload is successful or aborted. The user can click any blank space or press ESC before the timer expires to stop the timer to check the log in the upload window.
+    5. Adjust the default size after the interface is opened, so that the extension interface can fully display 5 lines of content.
+
+- **Fix bug**
+
+    1. After installing for the first time or clearing the cache and restarting, the device blocks are all damaged when loading a project with device.
+    2. Get error when trying to save a project into the root path of drive.
+
+## 2.4.0
+
+- **New feature**
+
+    1. Add support for Linux system.
+    2. Add support for Arduino Raspberry Pi Pico.
+
+- **Fix bug**
+
+    1. After load project file, the custom blocks in the project is missing in toolbox.
+
 ## v2.3.3
 
 - **New feature**
