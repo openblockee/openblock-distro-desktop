@@ -3,7 +3,7 @@
   "productName": "OpenBlockDesktopDistro",
   "description": "OpenBlock as a self-contained desktop application",
   "author": "Openblock.cc Team <contact@openblock.cc> (http://www.openblock.cc/)",
-  "version": "2.5.1",
+  "version": "2.5.1-1.0",
   "license": "MIT",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
@@ -31,11 +31,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/openblockcc/openblock-desktop.git"
+    "url": "https://github.com/openblockee/openblock-distro-desktop.git"
   },
   "dependencies": {
     "bytes": "^3.1.2",
-    "openblock-link": "^0.2.0-prerelease.20240630090135",
+    "openblock-link": "github:openblockee/openblock-distro-link#0.2.0-prerelease.20240704063557",
     "openblock-resource": "^0.2.0-prerelease.20240619025751",
     "postinstall": "^0.7.4",
     "source-map-support": "^0.5.19"
@@ -82,8 +82,8 @@
     "nets": "^3.2.0",
     "node-abort-controller": "^3.0.1",
     "node-fetch": "^3.2.1",
-    "openblock-gui": "github:openblockcc/openblock-gui#openblock-desktop-v2.5.1",
-    "openblock-l10n": "^3.15.20240627004658",
+    "openblock-gui": "github:openblockee/openblock-distro-gui#openblock-desktop-v2.5.1-1.0",
+    "openblock-l10n": "^3.15.20240704111820",
     "openblock-parse-release-message": "0.0.4",
     "os-locale": "^5.0.0",
     "react": "^16.14.0",
