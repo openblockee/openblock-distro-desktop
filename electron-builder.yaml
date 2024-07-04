@@ -31,7 +31,7 @@ mac:
     - dmg
     # - mas
 dmg:
-  title: "OpenBlock-Desktop-EE_${version}"
+  title: "OpenBlock-Desktop-Distro_${version}"
 # mas:
 #   category: public.app-category.education
 #   entitlements: buildResources/entitlements.mas.plist
