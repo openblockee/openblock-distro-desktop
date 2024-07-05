@@ -1,9 +1,8 @@
-name: Build and release
+name: Build Test App
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [ main, develop ]
     paths-ignore:
       - 'README.md'
       - 'CHANGE.md'
@@ -11,52 +10,7 @@ on:
       - '.github/*'
 
 jobs:
-  create-release:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Get tag
-        id: tag
-        uses: dawidd6/action-get-tag@v1
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.tag.outputs.tag }}
-          release_name: OpenBlock Distro Desktop ${{ steps.tag.outputs.tag }}
-          body: |
-            ## Change Log (en)
-
-            - **New feature**
-
-                1. Feature 1.
-                2. Feature 2.
-
-            - **Fix bug**
-
-                1. Bug 1.
-                2. Bug 2.
-
-            ## 更改日志 (zh-cn)
-
-            - **新功能**
-
-                1. 功能1。
-                2. 功能2。
-
-            - **修复错误**
-
-                1. 错误1。
-                2. 错误2。
-          draft: true
-          prerelease: false
-
   build-windows:
-    needs: create-release
     runs-on: windows-2019
     steps:
       - uses: actions/checkout@v2
@@ -74,16 +28,21 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           npm ci
 
-      - name: Build and Publish
+      - name: Build Dist
         env:
           GA_ID: ${{ secrets.GA_ID }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_ENV: production
           NODE_OPTIONS: --max_old_space_size=4096
-        run: npm run publish
+        run: npm run dist
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: OpenBlock-Desktop-win32
+          path: dist/OpenBlock-Desktop*.exe
+          retention-days: 1
 
   build-mac:
-    needs: create-release
     runs-on: macos-13
     steps:
       - uses: actions/checkout@v2
@@ -108,20 +67,24 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           npm ci
 
-      - name: Build and Publish
+      - name: Build Dist
         env:
           GA_ID: ${{ secrets.GA_ID }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_ENV: production
           NODE_OPTIONS: --max_old_space_size=8192
           CSC_IDENTITY_AUTO_DISCOVERY: false
-          PYTHON_PATH: python
         run: |
           export PYTHON_PATH=$(pyenv root)/shims/python
-          npm run publish
+          npm run dist
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: OpenBlock-Desktop-darwin
+          path: dist/OpenBlock-Desktop*.dmg
+          retention-days: 1
 
   build-linux:
-    needs: create-release
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -132,18 +95,24 @@ jobs:
           node-version: '16.x'
 
       - name: Npm Install
-        run: npm |
+        run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
-          ci
+          npm ci
 
-      - name: Build and Publish
+      - name: Build Dist
         env:
           GA_ID: ${{ secrets.GA_ID }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_ENV: production
           NODE_OPTIONS: --max_old_space_size=8192
           CSC_IDENTITY_AUTO_DISCOVERY: false
-        run: npm run publish
+        run: npm run dist
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: OpenBlock-Desktop-linux
+          path: dist/OpenBlock-Desktop*.deb
+          retention-days: 1

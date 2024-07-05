@@ -3,15 +3,11 @@ directories:
   output: dist
 extraFiles: ['LICENSE', 'LICENSE.ScratchFoundation', 'TRADEMARK', "tools", "external-resources", 'firmwares', "drivers"]
 
-appId: openblock.cc.openblock-ee-desktop
-productName: "OpenBlockDesktopEE"
+appId: openblock.cc.openblock-distro-desktop
+productName: "OpenBlockDesktopDistro"
 publish:
   - provider: github
-  - provider: spaces
-    name: openblockee
-    path: desktop
-    region: sgp1
-artifactName: "OpenBlock-Desktop-EE_v${version}_${os}_${arch}.${ext}"
+artifactName: "OpenBlock-Desktop-Distro_v${version}_${os}_${arch}.${ext}"
 
 fileAssociations:
   ext: ob
@@ -35,7 +31,7 @@ mac:
     - dmg
     # - mas
 dmg:
-  title: "OpenBlock-Desktop-EE_${version}"
+  title: "OpenBlock-Desktop-Distro_${version}"
 # mas:
 #   category: public.app-category.education
 #   entitlements: buildResources/entitlements.mas.plist

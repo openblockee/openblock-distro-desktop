@@ -31,19 +31,19 @@ const licenseContent = {
                 between you and OpenBlock (ShenZhen) Technology Co., Ltd..
             </p>
             <p>
-                This EULA agreement governs your acquisition and use of our OpenBlockDesktopEE
+                This EULA agreement governs your acquisition and use of our OpenBlockDesktopDistro
                 software (&quot;Software&quot;) directly from OpenBlock (ShenZhen) Technology Co., Ltd.
                 or indirectly through a OpenBlock (ShenZhen) Technology Co., Ltd.
                 authorized reseller or distributor (a &quot;Reseller&quot;).
             </p>
             <p>
                 Please read this EULA agreement carefully before completing the
-                installation process and using the OpenBlockDesktopEE software.
-                It provides a license to use the OpenBlockDesktopEE software
+                installation process and using the OpenBlockDesktopDistro software.
+                It provides a license to use the OpenBlockDesktopDistro software
                 and contains warranty information and liability disclaimers.
             </p>
             <p>
-                By clicking &quot;accept&quot; or installing and/or using the OpenBlockDesktopEE
+                By clicking &quot;accept&quot; or installing and/or using the OpenBlockDesktopDistro
                 software, you are confirming your acceptance of the Software and agreeing to
                 become bound by the terms of this EULA agreement.
             </p>
@@ -67,14 +67,14 @@ const licenseContent = {
             <h3>License Grant</h3>
             <p>
                 OpenBlock (ShenZhen) Technology Co., Ltd. hereby grants you a personal,
-                non-transferable, non-exclusive licence to use the OpenBlockDesktopEE
+                non-transferable, non-exclusive licence to use the OpenBlockDesktopDistro
                 software on your devices in accordance with the terms of this EULA agreement.
             </p>
             <p>
-                You are permitted to load the OpenBlockDesktopEE software (for example a PC,
+                You are permitted to load the OpenBlockDesktopDistro software (for example a PC,
                 laptop, mobile or tablet) under your control. You are responsible for
                 ensuring your device meets the minimum requirements of
-                the OpenBlockDesktopEE software.
+                the OpenBlockDesktopDistro software.
             </p>
             <p>
                 You are not permitted to:
