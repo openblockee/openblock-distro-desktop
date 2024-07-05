@@ -4,11 +4,6 @@ on:
   push:
     tags:
       - 'v*'
-    paths-ignore:
-      - 'README.md'
-      - 'CHANGE.md'
-      - 'doc/*'
-      - '.github/*'
 
 jobs:
   create-release:
