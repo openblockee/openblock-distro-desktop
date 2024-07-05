@@ -22,7 +22,10 @@ jobs:
 
       - name: Npm Install
         run: |
-          git config --global url."https://github.com".insteadOf ssh://git@github.com
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
           npm ci
 
       - name: Build Dist
@@ -58,6 +61,10 @@ jobs:
       - name: Npm Install
         run: |
           pip install setuptools
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
           npm ci
 
       - name: Build Dist
@@ -88,7 +95,12 @@ jobs:
           node-version: '16.x'
 
       - name: Npm Install
-        run: npm ci
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          npm ci
 
       - name: Build Dist
         env:
