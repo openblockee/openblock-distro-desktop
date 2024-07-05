@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "bytes": "^3.1.2",
-    "openblock-link": "github:openblockee/openblock-distro-link#0.2.0-prerelease.20240704063557",
+    "openblock-link": "github:openblockee/openblock-distro-link#0.2.0-prerelease.20240705043934",
     "openblock-resource": "^0.2.0-prerelease.20240619025751",
     "postinstall": "^0.7.4",
     "source-map-support": "^0.5.19"
