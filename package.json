@@ -3,10 +3,10 @@
   "productName": "OpenBlockDesktop CaDA",
   "description": "OpenBlock as a self-contained desktop application",
   "author": "Openblock.cc Team",
-  "version": "2.3.11",
+  "version": "2.3.13",
   "license": "MIT",
   "scripts": {
-    "postinstall": "electron-builder install-app-deps",
+    "postinstall": "electron-builder install-app-deps --arch=ia32",
     "clean": "rimraf ./dist ./static ./external-resources ./tools ./translations ./firmwares ./drivers",
     "i18n:src": "mkdirp translations/core && format-message extract --out-file translations/core/en.json src/main/**.js",
     "i18n:push": "tx-push-src openblock-editor desktop translations/core/en.json",
