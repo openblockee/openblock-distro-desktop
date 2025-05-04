@@ -67,6 +67,7 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PKG_TOKEN }}" > ~/.npmrc
           npm ci
 
       - name: Build and Publish
@@ -101,6 +102,7 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PKG_TOKEN }}" > ~/.npmrc
           npm ci
 
       - name: Build and Publish
@@ -132,6 +134,7 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PKG_TOKEN }}" > ~/.npmrc
           npm ci
 
       - name: Build and Publish
