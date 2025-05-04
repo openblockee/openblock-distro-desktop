@@ -1,8 +1,8 @@
 import React from 'react';
 import {compose} from 'redux';
-import GUI from 'openblock-gui/src/index';
+import GUI from '@openblockee/openblock-gui/src/index';
 
-import AppStateHOC from 'openblock-gui/src/lib/app-state-hoc.jsx';
+import AppStateHOC from '@openblockee/openblock-gui/src/lib/app-state-hoc.jsx';
 
 import ScratchDesktopAppStateHOC from './ScratchDesktopAppStateHOC.jsx';
 import ScratchDesktopGUIHOC from './ScratchDesktopGUIHOC.jsx';

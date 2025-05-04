@@ -3,7 +3,7 @@
   "productName": "OpenBlockDesktopDistro",
   "description": "OpenBlock as a self-contained desktop application",
   "author": "Openblock.cc Team <contact@openblock.cc> (http://www.openblock.cc/)",
-  "version": "2.5.1-1.0",
+  "version": "2.6.0-1.1",
   "license": "MIT",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
@@ -14,8 +14,8 @@
     "compile": "mkdirp ./dist && electron-webpack --bail --display-error-details --env.minify=false --no-progress",
     "fetch:drivers": "rimraf ./drivers && node scripts/download-driver.js",
     "fetch:exts": "rimraf ./external-resources && node ./node_modules/openblock-resource/script/download.js  --repo=openblockcc/external-resources-v3",
-    "fetch:firmwares": "rimraf ./firmwares && node ./node_modules/openblock-link/script/download-firmwares.js",
-    "fetch:tools": "rimraf ./tools && node ./node_modules/openblock-link/script/download-tools.js",
+    "fetch:firmwares": "rimraf ./firmwares && node ./node_modules/@openblockee/openblock-link/script/download-firmwares.js",
+    "fetch:tools": "rimraf ./tools && node ./node_modules/@openblockee/openblock-link/script/download-tools.js",
     "fetch:static": "rimraf ./static && mkdirp ./static && git clone https://github.com/openblockcc/openblock-assets.git static && rimraf ./static/.git",
     "fetch:all": "npm run fetch:drivers && npm run fetch:exts && npm run fetch:firmwares && npm run fetch:tools && npm run fetch:static",
     "build": "npm run build:dev",
@@ -34,9 +34,9 @@
     "url": "https://github.com/openblockee/openblock-distro-desktop.git"
   },
   "dependencies": {
+    "@openblockee/openblock-link": "^0.2.0-prerelease.20250502154113",
     "bytes": "^3.1.2",
-    "openblock-link": "github:openblockee/openblock-distro-link#0.2.0-prerelease.20240705043934",
-    "openblock-resource": "^0.2.0-prerelease.20240619025751",
+    "openblock-resource": "^0.2.0-prerelease.20250302101433",
     "postinstall": "^0.7.4",
     "source-map-support": "^0.5.19"
   },
@@ -49,6 +49,7 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
     "@electron/remote": "^2.0.5",
+    "@openblockee/openblock-gui": "github:openblockee/openblock-distro-gui#openblock-desktop-v2.6.0-1.1",
     "async": "^3.2.0",
     "autoprefixer": "^9.8.8",
     "babel-eslint": "^10.1.0",
@@ -84,7 +85,6 @@
     "nets": "^3.2.0",
     "node-abort-controller": "^3.0.1",
     "node-fetch": "^3.2.1",
-    "openblock-gui": "github:openblockee/openblock-distro-gui#openblock-desktop-v2.5.1-1.0",
     "openblock-l10n": "^3.15.20240704111820",
     "openblock-parse-release-message": "0.0.4",
     "os-locale": "^5.0.0",

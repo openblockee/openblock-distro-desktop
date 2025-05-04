@@ -12,7 +12,7 @@ const getModulePath = moduleName => {
         return path.dirname(require.resolve(`${moduleName}/package.json`));
     } catch (e) {
         try {
-            const openblockGuiPath = path.dirname(require.resolve('openblock-gui/package.json'));
+            const openblockGuiPath = path.dirname(require.resolve('@openblockee/openblock-gui/package.json'));
             return path.resolve(openblockGuiPath, 'node_modules', moduleName);
         } catch (err) {
             throw new Error(`Module ${moduleName} could not be resolved. Ensure it is installed or linked properly.`);
@@ -31,6 +31,7 @@ module.exports = defaultConfig =>
                 path.resolve(__dirname, 'src', 'renderer'),
                 /node_modules[\\/]+scratch-[^\\/]+[\\/]+src/,
                 /node_modules[\\/]+openblock-[^\\/]+[\\/]+src/,
+                /node_modules[\\/]+@openblockee[\\/]+openblock-[^\\/]+[\\/]+src/,
                 /node_modules[\\/]+pify/,
                 /node_modules[\\/]+@vernier[\\/]+godirect/
             ],
@@ -39,15 +40,15 @@ module.exports = defaultConfig =>
                     onBuildStart: ['node scripts/prepare.js']
                 }),
                 new CopyWebpackPlugin([{
-                    from: path.join(getModulePath('openblock-blocks'), 'media'),
+                    from: path.join(getModulePath('@openblockee/openblock-blocks'), 'media'),
                     to: 'static/blocks-media'
                 }]),
                 new CopyWebpackPlugin([{
                     from: 'extension-worker.{js,js.map}',
-                    context: path.join(getModulePath('openblock-vm'), 'dist', 'web')
+                    context: path.join(getModulePath('@openblockee/openblock-vm'), 'dist', 'web')
                 }]),
                 new CopyWebpackPlugin([{
-                    from: path.join(getModulePath('openblock-gui'), 'src', 'lib', 'libraries', '*.json'),
+                    from: path.join(getModulePath('@openblockee/openblock-gui'), 'src', 'lib', 'libraries', '*.json'),
                     to: 'static/libraries',
                     flatten: true
                 }])

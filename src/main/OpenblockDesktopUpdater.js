@@ -6,7 +6,7 @@ import path from 'path';
 
 import formatMessage from 'format-message';
 import parseReleaseMessage from 'openblock-parse-release-message';
-import {UPDATE_TARGET, UPDATE_MODAL_STATE} from 'openblock-gui/src/lib/update-state.js';
+import {UPDATE_TARGET, UPDATE_MODAL_STATE} from '@openblockee/openblock-gui/src/lib/update-state.js';
 import {AbortController} from 'node-abort-controller';
 class OpenblockDesktopUpdater {
     constructor (webContents, resourceServer) {

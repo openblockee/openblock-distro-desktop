@@ -7,7 +7,7 @@ import fs from 'fs-extra';
 import sudo from 'sudo-prompt';
 import {productName} from '../../package.json';
 
-import OpenBlockLink from 'openblock-link';
+import OpenBlockLink from '@openblockee/openblock-link';
 import OpenblockResourceServer from 'openblock-resource';
 
 class OpenblockDesktopLink {
