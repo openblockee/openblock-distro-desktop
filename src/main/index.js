@@ -451,7 +451,7 @@ const createMainWindow = () => {
     });
 
     ipcMain.on('reqeustCheckUpdate', () => {
-        update.reqeustCheckUpdate();
+        update.reqeustCheckUpdate(_windows.main);
     });
 
     ipcMain.on('reqeustUpdate', () => {
@@ -517,7 +517,6 @@ app.on('ready', () => {
             const {default: installExtension, ...devToolsExtensions} = importedModule;
             const extensionsToInstall = [
                 devToolsExtensions.REACT_DEVELOPER_TOOLS,
-                devToolsExtensions.REACT_PERF,
                 devToolsExtensions.REDUX_DEVTOOLS
             ];
             for (const extension of extensionsToInstall) {
