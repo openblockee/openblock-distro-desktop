@@ -36,7 +36,7 @@ module.exports = defaultConfig =>
                 /node_modules[\\/]+@vernier[\\/]+godirect/
             ],
             plugins: [
-                new WebpackShellPlugin({
+                new WebpackShellPlugin({ // Used to copy customized splash screen images
                     onBuildStart: ['node scripts/prepare.js']
                 }),
                 new CopyWebpackPlugin([{
