@@ -8,6 +8,7 @@
     2. In pure scratch programming state without selecting a device, the signal strength icon is not displayed in the stage bar.
     3. Supports using environment variables to specify the path of external resources.
     4. Added new built-in boards: UNOR4, ESP32S3, PRI PICO W, PRI PICO 2, PRI PICO 2 W.
+    5. Allow users in China to choose whether to skip the main program update check.
 
 - **Fix bug**
 
