@@ -39,22 +39,15 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: OpenBlock-Desktop-win
-          path: dist/OpenBlock-Desktop*win.exe
-          retention-days: 1
-
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v4
-        with:
-            name: OpenBlock-Desktop-win-ia32
-            path: dist/OpenBlock-Desktop*ia32.exe
+            name: OpenBlock-Desktop-Distro-win-ia32
+            path: dist/OpenBlock-Desktop-Distro*ia32.exe
             retention-days: 1
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: OpenBlock-Desktop-win-x64
-          path: dist/OpenBlock-Desktop*x64.exe
+          name: OpenBlock-Desktop-Distro-win-x64
+          path: dist/OpenBlock-Desktop-Distro*x64.exe
           retention-days: 1
 
   build-mac:
@@ -97,8 +90,8 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: OpenBlock-Desktop-darwin
-          path: dist/OpenBlock-Desktop*.dmg
+          name: OpenBlock-Desktop-Distro-darwin
+          path: dist/OpenBlock-Desktop-Distro*.dmg
           retention-days: 1
 
   build-linux:
@@ -149,6 +142,6 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: OpenBlock-Desktop-linux
-          path: dist/OpenBlock-Desktop*.deb
+          name: OpenBlock-Desktop-Distro-linux
+          path: dist/OpenBlock-Desktop-Distro*.deb
           retention-days: 1
