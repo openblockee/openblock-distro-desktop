@@ -1,5 +1,16 @@
 # Change Log
 
+## 2.6.1-1.2
+
+- **New feature**
+
+    1. Use 7z format to publish the installation package for macos in github release.
+    2. No longer publish on Google Drive.
+
+- **Fix bug**
+
+    1. Unsupported realtime mode extensions showing up in upload mode extensions selection menu.
+
 ## 2.6.0-1.1
 
 - **New feature**

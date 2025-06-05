@@ -3,7 +3,7 @@
   "productName": "OpenBlockDesktopDistro",
   "description": "OpenBlock as a self-contained desktop application",
   "author": "Openblock.cc Team <contact@openblock.cc> (http://www.openblock.cc/)",
-  "version": "2.6.0-1.1",
+  "version": "2.6.1-1.2",
   "license": "MIT",
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
