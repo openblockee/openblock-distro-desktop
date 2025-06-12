@@ -42,4 +42,4 @@ jobs:
         bduss: ${{ secrets.BN_BDUSS }}
         stoken: ${{ secrets.BN_STOKEN }}
         target: downloads/OpenBlock-Desktop*
-        remote-dir: OpenBlock/OpenBlock Desktop
+        remote-dir: OpenBlock/OpenBlock Desktop Distro
