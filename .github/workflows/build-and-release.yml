@@ -80,14 +80,6 @@ jobs:
           NODE_OPTIONS: --max_old_space_size=4096
         run: npm run publish
 
-      - name: Upload artifacts to Baidu Netdisk
-        uses: openblockcc/baidu-netdisk-upload-action@v1
-        with:
-          bduss: ${{ secrets.BN_BDUSS }}
-          stoken: ${{ secrets.BN_STOKEN }}
-          target: dist/OpenBlock-Desktop*.exe
-          remote-dir: OpenBlock/OpenBlock Desktop Distro
-
   build-mac:
     needs: create-release
     runs-on: macos-13
@@ -151,14 +143,6 @@ jobs:
           file: dist/OpenBlock-Desktop*.7z
           release_id: ${{ needs.create-release.outputs.release_id }}
 
-      - name: Upload artifacts to Baidu Netdisk
-        uses: openblockcc/baidu-netdisk-upload-action@v1
-        with:
-          bduss: ${{ secrets.BN_BDUSS }}
-          stoken: ${{ secrets.BN_STOKEN }}
-          target: dist/OpenBlock-Desktop*.7z
-          remote-dir: OpenBlock/OpenBlock Desktop Distro
-
   build-linux:
     needs: create-release
     runs-on: ubuntu-24.04
@@ -205,11 +189,3 @@ jobs:
           CSC_IDENTITY_AUTO_DISCOVERY: false
           USE_HARD_LINKS: false
         run: npm run publish
-
-      - name: Upload artifacts to Baidu Netdisk
-        uses: openblockcc/baidu-netdisk-upload-action@v1
-        with:
-          bduss: ${{ secrets.BN_BDUSS }}
-          stoken: ${{ secrets.BN_STOKEN }}
-          target: dist/OpenBlock-Desktop*.deb
-          remote-dir: OpenBlock/OpenBlock Desktop Distro
